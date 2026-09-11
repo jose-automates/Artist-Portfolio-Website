@@ -8,7 +8,7 @@ pulled out to stand on its own with no server.
 > **Disclaimer:** This site is a fictitious demo. It contains no real personal
 > information.
 
-Live: https://jose-automates.github.io/Artist-Portfolio-Website/
+Live: https://jose-automates.github.io/Artist-Portfolio-Frontend/
 
 ## What's inside
 
