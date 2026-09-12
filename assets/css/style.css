@@ -166,6 +166,10 @@ h6 {
 #header.header-top h1 {
   margin-right: auto;
   font-size: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 #header.header-top img {
@@ -182,6 +186,13 @@ h6 {
   margin: 0;
 }
 
+@media (max-width: 991px) {
+  /* Leave room so the title never runs under the fixed hamburger icon */
+  #header.header-top .container {
+    padding-right: 45px;
+  }
+}
+
 @media (max-width: 768px) {
   #header.header-top {
     height: 60px;
@@ -189,6 +200,12 @@ h6 {
 
   #header.header-top h1 {
     font-size: 26px;
+  }
+}
+
+@media (max-width: 340px) {
+  #header.header-top h1 {
+    font-size: 20px;
   }
 }
 
@@ -423,6 +440,21 @@ section .container {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 576px) {
+  /* Stack the label and value instead of squeezing both into one
+     narrow row, which was forcing multi-line wraps on both sides
+     at once and making the list very tall and hard to read. */
+  .about-me .content ul li {
+    flex-wrap: wrap;
+  }
+
+  .about-me .content ul li span {
+    flex-basis: 100%;
+    margin-top: 4px;
+    padding-left: 24px;
+  }
 }
 
 .about-me .content ul strong {
