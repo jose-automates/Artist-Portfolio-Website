@@ -67,63 +67,63 @@ const portfolioProjects = {
         category: "Book Cover Design",
         company: "Hazel Ridge Press",
         date: "March 2024",
-        description: "A hand-painted cover for an indie YA fantasy novel about a girl who inherits her grandmother's orchard — and the magic buried beneath it. I built the composition around a single silvery apple tree lit by moonlight, using a limited palette of indigo and gold to keep the mood dreamy without losing readability at thumbnail size. The lettering was hand-drawn and scanned in, then vectorized in Illustrator so it would hold up across print and e-book formats."
+        description: "A hand-painted cover for an indie YA fantasy about a girl who inherits her grandmother's orchard, and the magic buried under it. I kept it simple: one silvery apple tree in the moonlight, indigo and gold so it still reads well as a tiny thumbnail. I hand-lettered the title myself and cleaned it up in Illustrator."
     },
     2: {
         title: "Golden Hour at Discovery Park",
         category: "Landscape Photography",
         company: "Personal Project",
         date: "June 2023",
-        description: "Shot over three evenings at Discovery Park while I was chasing the perfect light for a series on California's changing seasons. I wanted the photo to feel like a held breath — the last warm minute before dusk — so I underexposed slightly in-camera and pulled the shadows back in post to keep the golden tones from blowing out. It's one of my most-requested prints at school art shows."
+        description: "I went back to Discovery Park three evenings in a row just to catch this light. Underexposed a touch in-camera so the golden tones wouldn't blow out, then pulled the shadows back in editing. Still my most-requested print at school art shows."
     },
     3: {
         title: "The Clockmaker's Daughter",
         category: "Book Cover Design",
         company: "Hazel Ridge Press",
         date: "September 2023",
-        description: "A vintage-inspired cover for a mystery novel set in a fictional 1920s watchmaking town. I researched real clockmaking diagrams to get the gear illustrations technically believable, then aged the palette with sepia tones and a subtle paper-grain texture. The author told me it was the first cover concept she approved without a single revision."
+        description: "A vintage cover for a mystery set in a 1920s watchmaking town. I looked up real clockmaking diagrams so the gears would hold up to a close look, then aged everything with sepia tones and a bit of paper grain. The author approved it on the first try, no revisions."
     },
     4: {
         title: "Roots & Resilience",
         category: "Editorial Illustration",
         company: "Sacramento Environmental Coalition",
         date: "April 2024",
-        description: "Commissioned for the Coalition's Earth Day campaign, this piece imagines a neighborhood's root systems as one interconnected network beneath the sidewalk cracks — a visual metaphor for community climate resilience. I'd volunteered with the Coalition's cleanup crews for a year before this project, and wanted the illustration to reflect what I actually saw: quiet, collective effort, not grand gestures."
+        description: "Made for the Coalition's Earth Day campaign: roots under the sidewalk cracks, all connected, standing in for how a community holds itself together. I'd spent a year volunteering with their cleanup crews before this, so I wanted it to look like what I'd actually seen: quiet, steady effort, not a big dramatic gesture."
     },
     5: {
         title: "Downtown Farmers Market",
         category: "Event Photography",
         company: "Sacramento Downtown Partnership",
         date: "August 2023",
-        description: "A candid documentary series covering a Saturday at the downtown farmers market, shot on assignment for the Partnership's social media relaunch. I focused on hands — a vendor weighing peaches, a kid reaching for a strawberry sample — to keep the story human-scale rather than just wide shots of stalls. Six images from this set later ran in the Partnership's fall newsletter."
+        description: "Shot on assignment for the Partnership's social media relaunch, one Saturday at the downtown market. I kept coming back to hands: a vendor weighing peaches, a kid grabbing a strawberry sample. Felt more honest than wide shots of the stalls. Six of these ended up in their fall newsletter."
     },
     6: {
         title: "Beneath a Paper Sky",
         category: "Book Cover Design",
         company: "Independent Author (self-published)",
         date: "November 2023",
-        description: "A minimalist cover for a self-published poetry chapbook exploring grief and memory. The author asked for 'something that feels like folding a letter you'll never send,' so I built the image around a single origami crane dissolving into clouds shaped like more paper cranes. It's one of the pieces I'm proudest of, because the brief was almost entirely a feeling, not a description."
+        description: "A quiet cover for a self-published poetry chapbook about grief and memory. The author's brief was basically 'something that feels like folding a letter you'll never send,' so I drew one origami crane dissolving into a cloud of more cranes. Probably the piece I'm proudest of, since I had a feeling to work from, not a description."
     },
     7: {
         title: "The Last Monarch",
         category: "Editorial Illustration",
         company: "Artistry Magazine",
         date: "February 2024",
-        description: "An illustration accompanying a feature story on the decline of monarch butterfly populations along the Pacific Flyway. I layered dozens of hand-drawn wing patterns so a single monarch dissolves into a swarm of moths at the edge of the frame — a quiet visual argument about what's being lost. This ran alongside my internship byline in Artistry's spring issue."
+        description: "Drawn for a feature on the shrinking monarch population along the Pacific Flyway. I layered dozens of hand-drawn wings so one monarch slowly breaks apart into moths near the edge of the page, a small nod to what's disappearing. It ran with my byline in Artistry's spring issue, my first published illustration."
     },
     8: {
         title: "Portraits of Kindness",
         category: "Illustration Series",
         company: "Art4Change",
         date: "July 2022",
-        description: "A five-piece illustration series created during my volunteer work with Art4Change, each portrait paired with a short story from someone the nonprofit had directly helped. I worked from real interview notes (names changed for privacy) to keep the likenesses respectful rather than generic. The series was displayed at the nonprofit's annual fundraiser gala."
+        description: "Five portraits I drew while volunteering with Art4Change, each paired with a short story from someone the nonprofit had actually helped. I worked from real interview notes, with names changed for privacy, so they'd feel specific instead of generic. The set hung at their annual fundraiser gala."
     },
     9: {
         title: "Riverbank Cleanup Day",
         category: "Documentary Photography",
         company: "Sacramento River Conservancy",
         date: "May 2024",
-        description: "Photographed a volunteer cleanup along the American River for the Conservancy's annual report. I shot mostly wide and low to show the scale of the debris removed, then closed the essay with one quiet frame of a volunteer's muddy gloves resting on a full trash bag. It's become one of my favorite examples of photography advocating for something without needing a caption."
+        description: "Photos from a volunteer cleanup along the American River, shot for the Conservancy's annual report. Mostly wide, low angles to show how much debris actually came out of there, ending on one still frame of muddy gloves resting on a full trash bag. No caption needed for that one."
     }
 };
 
