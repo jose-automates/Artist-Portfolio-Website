@@ -1,27 +1,10 @@
 // My own JS script for index.html
 $(document).ready(function() {
-    showInfoAlert("<h3 style='color:#18d26e;'>Info</h3>", "<h6>This is a ficticious portfolio created to showcase web development skills</h6>");
     grabContentForDetailsPage(); // Portfolio Details Related Code
     sendContactInfoToServer(); // Contact Form Related Code
 });
 
 /* Custom jAlert Handlers */
-function showInfoAlert(titleHTML, messageHTML)
-{
-    // Show info alert accoding to sessionStorage showInfo value
-    const showInfo = !window.location.href.includes("#") || !window.location.href.includes("portfolio");
-
-    // User is in raw index.html page and has not visited any section
-    if (showInfo)
-    {
-        $.jAlert({
-            "title": titleHTML,
-            "content": messageHTML,
-            "theme": "black",
-        });
-    }
-}
-
 function showErrorAlert(errorMessage)
 {
     // Show an error jAlert when something went wrong

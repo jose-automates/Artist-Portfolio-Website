@@ -442,6 +442,12 @@ section .container {
   align-items: center;
 }
 
+.about-me .content ul li span {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 @media (max-width: 576px) {
   /* Stack the label and value instead of squeezing both into one
      narrow row, which was forcing multi-line wraps on both sides
