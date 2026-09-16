@@ -1,5 +1,2 @@
 // Define common data to be shared throughout the project
-const coreURL = "http://localhost/artist-portfolio-photo-gallery/";
-const mainPageLink = "http://localhost/artist-portfolio-photo-gallery/index.html";
-const portfolioDetailsBackEndProcessorLink = "http://localhost/artist-portfolio-photo-gallery/portfolio.php";
-const contactBackEndProcessorLink = "http://localhost/artist-portfolio-photo-gallery/contact.php";
+const contactBackEndProcessorLink = "https://curson8n-n8n.moggzk.easypanel.host/webhook/09e92bc0-561d-4bbb-aed4-e89d85847239/adriana-contacto";

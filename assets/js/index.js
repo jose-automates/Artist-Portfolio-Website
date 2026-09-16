@@ -351,6 +351,7 @@ function sendContactInfoToServer()
             $.ajax({
                 url: contactBackEndProcessorLink,
                 type: "POST",
+                contentType: "application/json",
                 data: JSON.stringify({
                     "name" : name,
                     "email" : email,
