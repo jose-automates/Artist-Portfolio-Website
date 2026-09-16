@@ -1193,13 +1193,17 @@ section .container {
   animation: animate-loading 1s linear infinite;
 }
 
+.contact .php-email-form .form-group {
+  position: relative;
+}
+
 .contact .php-email-form input,
 .contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
   background: rgba(255, 255, 255, 0.08);
-  border: 0;
+  border: 2px solid transparent;
   transition: 0.3s;
   color: #fff;
 }
@@ -1222,11 +1226,45 @@ section .container {
 }
 
 .contact .php-email-form input {
-  padding: 10px 15px;
+  padding: 10px 42px 10px 15px;
 }
 
 .contact .php-email-form textarea {
-  padding: 12px 15px;
+  padding: 12px 42px 12px 15px;
+}
+
+/* Live validation: a green check for a valid field, a red border plus
+   the field's own .invalid-feedback message for an invalid one. Both
+   states only appear once the visitor has actually interacted with
+   that field, so a pristine form doesn't open with errors showing. */
+.contact .php-email-form input.is-valid,
+.contact .php-email-form textarea.is-valid {
+  border-color: #18d26e;
+}
+
+.contact .php-email-form input.is-invalid,
+.contact .php-email-form textarea.is-invalid {
+  border-color: #dc3545;
+}
+
+.contact .php-email-form .field-valid-icon {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #18d26e;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.contact .php-email-form textarea ~ .field-valid-icon {
+  top: 16px;
+  transform: none;
+}
+
+.contact .php-email-form .field-valid-icon.active {
+  display: block;
 }
 
 .contact .php-email-form button[type=submit] {
@@ -1238,8 +1276,13 @@ section .container {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type=submit]:not(:disabled):hover {
   background: #15bb62;
+}
+
+.contact .php-email-form button[type=submit]:disabled {
+  background: rgba(24, 210, 110, 0.35);
+  cursor: not-allowed;
 }
 
 @keyframes animate-loading {

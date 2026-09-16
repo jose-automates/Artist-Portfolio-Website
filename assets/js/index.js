@@ -225,20 +225,85 @@ function removeClassIfPresent(element, classToRemove)
     }
 }
 
-function isInvalidField(conditionForInvalid, element)
+// Live validation rules for each contact field. Each field is only
+// considered "touched" (eligible to show a red/green state) once the
+// visitor has typed into it or left it, so a pristine form doesn't
+// open already showing errors.
+const contactFormFields = {
+    name: {
+        selector: "input#name",
+        validate: function(value) {
+            return /^[A-Za-z\s]+$/.test(value.trim()) && value.trim().length > 0;
+        }
+    },
+    email: {
+        selector: "input#email",
+        validate: function(value) {
+            return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(value.trim());
+        }
+    },
+    subject: {
+        selector: "input#subject",
+        validate: function(value) {
+            return value.trim().length > 0;
+        }
+    },
+    message: {
+        selector: "textarea[name='message']",
+        validate: function(value) {
+            return value.trim().length > 0;
+        }
+    }
+};
+
+function updateFieldValidationUI(fieldKey)
 {
-    /* Show an element as invalid or not according to a given condition */
-    if (conditionForInvalid)
+    /* Reflect one field's current validity: green check when valid,
+       red border + its .invalid-feedback message when invalid and
+       touched, or a neutral untouched state otherwise. */
+    const field = contactFormFields[fieldKey];
+    const fieldElement = $(field.selector);
+    const iconElement = fieldElement.next(".field-valid-icon");
+    const isValid = field.validate(fieldElement.val());
+    const isTouched = fieldElement.data("touched") === true;
+
+    if (!isTouched)
     {
-        addClassIfAbsent(element, "is-invalid");
-        return true;
+        removeClassIfPresent(fieldElement, "is-valid");
+        removeClassIfPresent(fieldElement, "is-invalid");
+        removeClassIfPresent(iconElement, "active");
+        return;
+    }
+
+    if (isValid)
+    {
+        removeClassIfPresent(fieldElement, "is-invalid");
+        addClassIfAbsent(fieldElement, "is-valid");
+        addClassIfAbsent(iconElement, "active");
     }
 
     else
     {
-        removeClassIfPresent(element, "is-invalid");
-        return false;
+        removeClassIfPresent(fieldElement, "is-valid");
+        addClassIfAbsent(fieldElement, "is-invalid");
+        removeClassIfPresent(iconElement, "active");
     }
+}
+
+function isContactFormValid()
+{
+    /* Whether every contact field currently holds a valid value,
+       regardless of whether it's been touched yet. */
+    return Object.keys(contactFormFields).every(function(fieldKey) {
+        const field = contactFormFields[fieldKey];
+        return field.validate($(field.selector).val());
+    });
+}
+
+function updateSubmitButtonState()
+{
+    /* The Send Message button stays disabled until every field is valid. */
+    $("button#contact-form-btn").prop("disabled", !isContactFormValid());
 }
 
 function sendContactInfoToServer()
@@ -248,44 +313,35 @@ function sendContactInfoToServer()
     // Grab the contact form
     const contactForm = $("form#contact-form");
     const contactFormBtn = $("button#contact-form-btn");
+
+    // Wire up live validation on every field
+    Object.keys(contactFormFields).forEach(function(fieldKey) {
+        const field = contactFormFields[fieldKey];
+
+        $(field.selector).on("input blur", function() {
+            $(this).data("touched", true);
+            updateFieldValidationUI(fieldKey);
+            updateSubmitButtonState();
+        });
+    });
+
+    updateSubmitButtonState();
+
     // Listen for the submit event
     contactForm.on("submit", function(e) {
         // Prevent default event
         e.preventDefault();
 
-        // Grab elements that hold required data
-        const nameElement = $("input#name");
-        const emailElement = $("input#email");
-        const subjectElement = $("input#subject");
-        const messageElement = $("textarea[name='message']");
+        if (!isContactFormValid())
+        {
+            return; // The submit button should already be disabled in this case
+        }
 
         // Grab required data from elements
-        const name = nameElement.val();
-        const email = emailElement.val();
-        const subject = subjectElement.val();
-        const message = messageElement.val();
-
-        // Regex for Form Validation
-        const nameRegex = /^[A-Za-z\s]+$/;
-        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-        // Check for any invalid element
-        const isNameInvalid = isInvalidField(!nameRegex.test(name), nameElement);
-        const isEmailInvalid = isInvalidField(!emailRegex.test(email), emailElement);
-        const isSubjectInvalid = isInvalidField(subject.length === 0, subjectElement);
-        const isMessageInvalid = isInvalidField(message.length === 0, messageElement);
-
-        const isSomeValueInvalid = [isNameInvalid, isEmailInvalid, isSubjectInvalid, isMessageInvalid];
-
-        function isSomeInvalid(element)
-        {
-            return element == true;
-        }
-
-        if (isSomeValueInvalid.some(isSomeInvalid))
-        {
-            return; // Return early to not send AJAX request
-        }
+        const name = $("input#name").val();
+        const email = $("input#email").val();
+        const subject = $("input#subject").val();
+        const message = $("textarea[name='message']").val();
 
         // ONLY SEND AJAX REQUEST WHEN THE BUTTON DOES NOT HAVE A SPINNER
 
@@ -302,6 +358,7 @@ function sendContactInfoToServer()
                     "message": message
                 }),
                 beforeSend: function() {
+                    contactFormBtn.prop("disabled", true);
                     contactFormBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
                 },
                 success: function(response)
@@ -310,12 +367,12 @@ function sendContactInfoToServer()
                     {
                         showSuccessAlert(response["success"]);
                     }
-    
+
                     else if (response.hasOwnProperty("error"))
                     {
                         showErrorAlert(response["error"]);
                     }
-    
+
                     else
                     {
                         showErrorAlert("Communication with the web server failed.");
@@ -328,6 +385,7 @@ function sendContactInfoToServer()
                 complete: function()
                 {
                     contactFormBtn.html('Send Message');
+                    updateSubmitButtonState();
                 }
             });
         }
