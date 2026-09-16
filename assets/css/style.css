@@ -201,17 +201,28 @@ h6 {
 
   /* Hard-cap the title's width so it can never reach the icon even if
      a fallback font (while the custom webfont is still loading) renders
-     wider than expected. The ellipsis rule above then does its job
-     within this guaranteed-safe width instead of the title's natural
-     content width. */
+     wider than expected. Below, the title wraps onto a second line
+     instead of being cut off/ellipsized when it doesn't fit on one. */
   #header.header-top h1 {
     max-width: calc(100% - 55px);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.2;
+  }
+
+  /* Let the bar grow to fit a wrapped two-line title instead of
+     clipping it to a fixed height. */
+  #header.header-top {
+    height: auto;
+    min-height: 80px;
+    padding: 10px 0;
   }
 }
 
 @media (max-width: 768px) {
   #header.header-top {
-    height: 60px;
+    min-height: 60px;
   }
 
   #header.header-top h1 {
