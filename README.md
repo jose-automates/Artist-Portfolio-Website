@@ -47,7 +47,7 @@ The webhook URL lives in one place:
 
 ```js
 // assets/js/common.js
-const contactBackEndProcessorLink = "https://curson8n-n8n.moggzk.easypanel.host/webhook/09e92bc0-561d-4bbb-aed4-e89d85847239/adriana-contacto";
+const contactBackEndProcessorLink = "https://curson8n-n8n.moggzk.easypanel.host/webhook/adriana-contacto";
 ```
 
 ## Folder structure
